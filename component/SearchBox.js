@@ -1,12 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
-const SearchBox = () => {
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+const SearchBox = ({navigation}) => {
+    const cartItem = useSelector((state) => state.reducer)
+    const [data, setData] = useState('')
+    useEffect(() => {
+        setData(cartItem.length)
+    },[cartItem])
   return (
     <View style={styles.container}>
           <Text style={styles.textView}>ShopCart</Text>
-          <Text style={{ fontSize: 20 }}>0</Text>
-          
+          <TouchableOpacity onPress={navigation.navigate('')}>
+            <Text style={{ fontSize: 20 }}>{ data}</Text>
+          </TouchableOpacity>
     </View>
   )
 }

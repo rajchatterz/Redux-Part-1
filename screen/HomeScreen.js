@@ -1,28 +1,30 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Product } from '../component/ProductDetails'
 import SearchBox from '../component/SearchBox'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../component/redux/action'
-const HomeScreen = () => {
+import { useSelector } from 'react-redux'
+const HomeScreen = ({navigation}) => {
+    const cartItem = useSelector((state)=>state.reducer)
     const dispatch = useDispatch()
     const handleClick = (item) => {
-        console.warn(item);
         dispatch(addToCart(item))
     }
+    
     const renderData = ({item}) => (
         <View style={styles.container}>
             <Image source={{uri:item.image}} style={{width: 150, height: 150,}}/>
             <Text style={styles.nameView}>{item.name}</Text>
             <Text style={styles.priceView}>{item.price}</Text>
             <TouchableOpacity onPress={()=>handleClick(item)}>
-                <Text style={styles.buttonView}>Add To Cart</Text>
+                <Text style={styles.buttonView}>Add to Cart</Text>
             </TouchableOpacity>
         </View>
     )
   return (
       <View style={{backgroundColor:'white'}}>
-          <SearchBox/>
+          <SearchBox navigation={ navigation} />
           <FlatList
               data={Product}
               renderItem={renderData}
