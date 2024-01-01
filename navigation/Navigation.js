@@ -6,6 +6,7 @@ import RootComponent from '../component/RootComponent'
 import SplashScreen from '../screen/SplashScreen'
 import HomeScreen from '../screen/HomeScreen'
 import CartScreen from '../screen/CartScreen'
+import OrderScreen from '../screen/OrderScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -16,7 +17,8 @@ const Navigation = () => {
               <Stack.Screen options={{ headerShown: false }} name='splash' component={SplashScreen} />
         <Stack.Screen name='Root' component={RootComponent} />
         <Stack.Screen name='Home' options={{ headerShown: false }} component={HomeScreen} />
-        <Stack.Screen name='Cart'  component={CartScreen}/>
+        <Stack.Screen name='Cart' options={{ headerTintColor: 'white', headerStyle: { backgroundColor: '#ac73fc' }, headerTitleStyle: { fontWeight: '800', fontSize: 16 } }} component={CartScreen} />
+        <Stack.Screen name='Order' component={OrderScreen}/>
           </Stack.Navigator>
         </NavigationContainer>
   )

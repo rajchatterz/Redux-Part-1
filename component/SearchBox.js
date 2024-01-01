@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 const SearchBox = ({navigation}) => {
@@ -10,9 +10,12 @@ const SearchBox = ({navigation}) => {
   return (
     <View style={styles.container}>
           <Text style={styles.textView}>ShopCart</Text>
-          <TouchableOpacity onPress={()=>navigation.navigate('Cart')}>
-            <Text style={{ fontSize: 20 }}>{ data}</Text>
-          </TouchableOpacity>
+        
+            <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate('Cart')}>
+                <Text style={{ fontSize: 25,fontWeight:'900',color:'#f7f7f7' }}>{ data}</Text>
+              <Image style={styles.image} source={require('../assets/icon.png')}/>
+            </TouchableOpacity>
+          
     </View>
   )
 }
@@ -33,8 +36,20 @@ const styles = StyleSheet.create({
     
 
     },
+    image: {
+        width: 40,
+        height:50
+    },
     textView: {
         fontSize: 20,
-        fontWeight:'900'
+        fontWeight: '900',
+        
+        
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap:-20
+        
     }
 })
