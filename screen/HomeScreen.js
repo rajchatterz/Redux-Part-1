@@ -2,13 +2,20 @@ import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react
 import React from 'react'
 import { Product } from '../component/ProductDetails'
 import SearchBox from '../component/SearchBox'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../component/redux/action'
 const HomeScreen = () => {
+    const dispatch = useDispatch()
+    const handleClick = (item) => {
+        console.warn(item);
+        dispatch(addToCart(item))
+    }
     const renderData = ({item}) => (
         <View style={styles.container}>
             <Image source={{uri:item.image}} style={{width: 150, height: 150,}}/>
             <Text style={styles.nameView}>{item.name}</Text>
             <Text style={styles.priceView}>{item.price}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>handleClick(item)}>
                 <Text style={styles.buttonView}>Add To Cart</Text>
             </TouchableOpacity>
         </View>
