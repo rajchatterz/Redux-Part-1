@@ -10,7 +10,7 @@ const SearchBox = ({navigation}) => {
   return (
     <View style={styles.container}>
           <Text style={styles.textView}>ShopCart</Text>
-          <TouchableOpacity onPress={navigation.navigate('')}>
+          <TouchableOpacity onPress={()=>navigation.navigate('Cart')}>
             <Text style={{ fontSize: 20 }}>{ data}</Text>
           </TouchableOpacity>
     </View>
