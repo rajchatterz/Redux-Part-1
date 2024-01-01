@@ -1,6 +1,7 @@
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Product } from '../component/ProductDetails'
+import SearchBox from '../component/SearchBox'
 const HomeScreen = () => {
     const renderData = ({item}) => (
         <View>
@@ -9,7 +10,8 @@ const HomeScreen = () => {
         </View>
     )
   return (
-    <View>
+      <View>
+          <SearchBox/>
           <FlatList
               data={Product}
               renderItem={renderData}
